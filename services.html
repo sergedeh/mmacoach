@@ -30,6 +30,11 @@
     .navbar-nav .nav-link::after { content: ''; position: absolute; bottom: 0; left: 14px; right: 100%; height: 2px; background: var(--red); transition: right .3s; }
     .navbar-nav .nav-link:hover { color: #fff !important; }
     .navbar-nav .nav-link:hover::after { right: 14px; }
+    /* current page indicator */
+    .navbar-nav .nav-link.active { color: #fff !important; }
+    .navbar-nav .nav-link.active::after { right: 14px; }
+    .navbar-nav .nav-link.btn-nav-cta::after { display: none; }
+    .navbar-nav .nav-link.btn-nav-cta.active { background: var(--red-dark) !important; box-shadow: inset 0 0 0 2px rgba(255,255,255,.45); }
     .btn-nav-cta { background: var(--red) !important; color: #fff !important; border-radius: 0 !important; font-family: var(--font-d); font-size: .8rem; letter-spacing: 2px; text-transform: uppercase; }
     .btn-nav-cta:hover { background: var(--red-dark) !important; }
     .navbar-toggler { border-color: rgba(255,255,255,.2); }
@@ -100,6 +105,31 @@
     .btn-join-solid { background: var(--red); color: #fff; border: 2px solid var(--red); }
     .btn-join-solid:hover { background: var(--red-dark); border-color: var(--red-dark); transform: translateY(-2px); }
 
+    /* TIER CARDS — progression levels */
+    .plan-quote { font-style: italic; font-size: .88rem; line-height: 1.5; color: var(--red); margin-bottom: 10px; }
+    .plan-desc { font-size: .87rem; line-height: 1.65; color: rgba(255,255,255,.5); margin-bottom: 12px; }
+    .plan-sublabel { font-family: var(--font-d); font-size: .68rem; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+    .plan-duration { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-d); font-size: .7rem; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,.62); background: rgba(255,255,255,.04); border-left: 2px solid var(--red); padding: 6px 12px; margin-top: 14px; }
+    .plan-duration i { color: var(--red); font-size: .85rem; }
+    .plan-price { border-top: 1px solid rgba(255,255,255,.07); margin-top: 14px; padding-top: 14px; }
+    .plan-price-main { display: flex; align-items: flex-end; gap: 8px; }
+    .plan-price-sub { font-family: var(--font-d); font-size: .68rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 7px; }
+    .plan-price-note { font-size: .74rem; color: rgba(255,255,255,.4); margin-top: 4px; }
+    .plan-price-opts { list-style: none; padding: 0; margin: 12px 0 0; }
+    .plan-price-opts li { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; font-size: .78rem; color: rgba(255,255,255,.5); padding: 6px 0; border-bottom: 1px dashed rgba(255,255,255,.07); }
+    .plan-price-opts li:last-child { border-bottom: none; }
+    .plan-price-opts .opt-val { font-family: var(--font-c); font-size: 1.05rem; font-weight: 700; color: #fff; white-space: nowrap; }
+    .plan-card.featured .plan-price-opts .opt-val { color: #fff; }
+
+    /* METHOD / DISCIPLINES */
+    .method-section { background: var(--dark2); border-top: 1px solid rgba(255,255,255,.05); }
+    .method-section p { color: rgba(255,255,255,.58); line-height: 1.9; }
+    .discipline-item { display: flex; align-items: center; gap: 12px; background: var(--dark3); border: 1px solid rgba(255,255,255,.06); border-left: 3px solid var(--red); padding: 14px 16px; height: 100%; transition: border-color .25s, transform .25s; }
+    .discipline-item:hover { transform: translateX(4px); border-color: rgba(232,33,46,.5); border-left-color: var(--red); }
+    .discipline-item i { color: var(--red); font-size: 1.1rem; flex-shrink: 0; }
+    .discipline-item span { font-family: var(--font-d); font-size: .82rem; letter-spacing: 1.5px; text-transform: uppercase; color: #fff; }
+    .first-step { background: rgba(232,33,46,.08); border: 1px solid rgba(232,33,46,.25); padding: 16px 20px; }
+
     /* PERKS */
     .perks-section { background: var(--dark2); border-top: 1px solid rgba(255,255,255,.05); }
     .perk-icon { width: 50px; height: 50px; background: rgba(232,33,46,.1); border: 1px solid rgba(232,33,46,.25); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
@@ -153,7 +183,7 @@
           <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
           <li class="nav-item"><a class="nav-link" href="about.html">Biographie</a></li>
           <li class="nav-item"><a class="nav-link" href="coaching.html">Coaching</a></li>
-          <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="services.html">Services</a></li>
           <li class="nav-item ms-lg-2"><a class="nav-link btn btn-nav-cta px-3 py-2" href="contact.html">Contact</a></li>
         </ul>
       </div>
@@ -180,9 +210,9 @@
           <div class="red-divider mt-3"></div>
         </div>
         <div class="col-12 col-lg-8 reveal reveal-1">
-          <p>Le Head Coach Konmon Deh apporte plus de 20 ans d'expérience en sports de combat à chaque service qu'il propose. Double Champion d'Europe et stratège derrière trois champions du monde et d'Europe en titre, son coaching repose sur une méthodologie d'élite éprouvée — pas seulement la théorie.</p>
-          <p>Que vous cherchiez un coaching personnalisé, des cours collectifs, une préparation au combat ou des sessions orientées fitness, chaque programme est conçu pour vous pousser au-delà de vos limites tout en assurant votre sécurité et votre progression technique.</p>
-          <p>Des débutants faisant leurs premiers pas dans les sports de combat aux combattants professionnels préparant des combats pour le titre, Konmon adapte son approche à vos objectifs et votre niveau. Il accompagne enfants, adultes et seniors.</p>
+          <p>Quel que soit votre niveau, votre objectif commence par une première étape. Chez Konmon Deh — Head Coach fort de plus de 20 ans d'expérience en sports de combat — vous bénéficiez d'un accompagnement personnalisé en Boxe anglaise, Kick-boxing, Grappling, Lutte et Préparation physique.</p>
+          <p>Débutant, sportif confirmé ou compétiteur : votre programme évolue avec vous. Chaque séance est construite autour de vos objectifs et de votre niveau, avec la même méthodologie d'élite que celle appliquée aux champions du monde et d'Europe qu'il coache.</p>
+          <p>Que vous souhaitiez vous remettre en forme, apprendre à vous défendre, progresser techniquement ou préparer une compétition, tout commence par une première séance de découverte.</p>
           <div class="support-badge d-flex align-items-center gap-3 p-3 mt-4">
             <div class="support-icon"><i class="bi bi-trophy-fill"></i></div>
             <div class="support-text-label"><strong>3 Champions du Monde Coachés</strong>Entraînez-vous avec un architecte de la performance certifié</div>
@@ -196,7 +226,7 @@
   <div class="divider-strip py-3">
     <div class="container-fluid px-4 px-lg-5 d-flex align-items-center gap-4">
       <div class="divider-line"></div>
-      <div class="divider-text">Formules d'Entraînement</div>
+      <div class="divider-text">Parcours d'Entraînement</div>
       <div class="divider-line"></div>
     </div>
   </div>
@@ -205,133 +235,146 @@
   <section class="plans-section py-5 py-lg-6">
     <div class="container-fluid px-4 px-lg-5">
       <div class="text-center mb-5 reveal">
-        <div class="section-tag center">Formules</div>
-        <h2 class="section-title">Choisissez Votre Formule</h2>
-        <p class="mx-auto mt-2" style="max-width:520px;color:rgba(255,255,255,.5);line-height:1.7">Coaching Individuel — Particuliers</p>
+        <div class="section-tag center">Parcours</div>
+        <h2 class="section-title">Trouvez le Coaching<br>Qui Vous Correspond</h2>
+        <p class="mx-auto mt-3" style="max-width:660px;color:rgba(255,255,255,.5);line-height:1.7">Quel que soit votre niveau, votre objectif commence par une première étape. Coaching individuel — particuliers, du débutant au compétiteur.</p>
       </div>
       <div class="row g-4 justify-content-center">
 
-        <!-- SINGLE SESSION -->
+        <!-- ÉTAPE 1 — DÉCOUVERTE -->
         <div class="col-12 col-md-6 col-lg-3 reveal">
           <div class="plan-card">
             <div class="plan-img-wrap">
-              <img src="https://images.unsplash.com/photo-1544216717-3bbf52512659?w=600&q=80&fit=crop" alt="Single Session"/>
+              <img src="https://images.unsplash.com/photo-1544216717-3bbf52512659?w=600&q=80&fit=crop" alt="Séance découverte"/>
               <div class="plan-img-overlay"></div>
-              <div class="plan-tier">Single Session</div>
+              <div class="plan-tier">Étape 1</div>
             </div>
             <div class="p-4 flex-fill d-flex flex-column">
-              <div class="plan-name mb-1">Séance à l'Unité</div>
-              <div class="d-flex align-items-end gap-1 border-bottom border-secondary py-3 mb-3">
-                <span class="plan-amount">80€</span>
-                <span class="text-muted ms-1" style="font-family:var(--font-d);font-size:.72rem;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px">/séance</span>
-              </div>
+              <div class="plan-name mb-1">Découverte</div>
+              <div class="plan-quote">« Je veux essayer »</div>
+              <p class="plan-desc">Vous souhaitez découvrir les sports de combat ou reprendre une activité physique ?</p>
               <ul class="plan-features flex-fill">
-                <li><i class="bi bi-check-circle-fill"></i>Session privée de 60 min avec Coach Konmon</li>
-                <li><i class="bi bi-check-circle-fill"></i>Coaching individuel (1-on-1)</li>
-                <li><i class="bi bi-check-circle-fill"></i>Sans engagement</li>
+                <li><i class="bi bi-check-circle-fill"></i>Faire connaissance avec le coach</li>
+                <li><i class="bi bi-check-circle-fill"></i>Définir votre objectif</li>
+                <li><i class="bi bi-check-circle-fill"></i>Découvrir les fondamentaux</li>
+                <li><i class="bi bi-check-circle-fill"></i>Évaluer votre niveau</li>
+                <li><i class="bi bi-check-circle-fill"></i>Pratiquer en toute sécurité</li>
               </ul>
-              <a class="btn-join btn-join-outline mt-3" href="contact.html">Réserver</a>
+              <div class="plan-duration"><i class="bi bi-clock"></i>30 minutes</div>
+              <div class="plan-price">
+                <div class="plan-price-main">
+                  <span class="plan-amount">45€</span>
+                  <span class="plan-price-sub">la séance</span>
+                </div>
+                <div class="plan-price-note">Séance individuelle de découverte, sans engagement.</div>
+              </div>
+              <a class="btn-join btn-join-solid mt-3" href="contact.html">Réserver ma séance</a>
             </div>
           </div>
         </div>
 
-        <!-- MONTHLY (FEATURED) -->
+        <!-- ÉTAPE 2 — PROGRESSION -->
         <div class="col-12 col-md-6 col-lg-3 reveal reveal-1">
           <div class="plan-card featured">
-            <div class="plan-ribbon">Popular</div>
+            <div class="plan-ribbon">Populaire</div>
             <div class="plan-img-wrap">
-              <img src="https://images.unsplash.com/photo-1591117207239-788bf8de6c3b?w=600&q=80&fit=crop" alt="Monthly"/>
+              <img src="https://images.unsplash.com/photo-1591117207239-788bf8de6c3b?w=600&q=80&fit=crop" alt="Progression"/>
               <div class="plan-img-overlay"></div>
-              <div class="plan-tier">Mensuel</div>
+              <div class="plan-tier">Étape 2</div>
             </div>
             <div class="p-4 flex-fill d-flex flex-column">
-              <div class="plan-name mb-1">Forfait Mensuel</div>
-              <div class="d-flex align-items-end gap-1 border-bottom border-secondary py-3 mb-3">
-                <span class="plan-amount">240€</span>
-                <span class="text-muted ms-1" style="font-family:var(--font-d);font-size:.72rem;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px">/mois</span>
-              </div>
+              <div class="plan-name mb-1">Progression</div>
+              <div class="plan-quote">« Je veux apprendre et progresser »</div>
+              <p class="plan-desc">Vous avez envie de vous améliorer et de construire de bonnes bases ?</p>
+              <div class="plan-sublabel">Travail personnalisé sur</div>
               <ul class="plan-features flex-fill">
-                <li class="hl"><i class="bi bi-check-circle-fill"></i>1 séance par semaine (4 séances)</li>
-                <li class="hl"><i class="bi bi-check-circle-fill"></i>Soit 60 € / séance</li>
-                <li><i class="bi bi-check-circle-fill"></i>Plan d'entraînement personnalisé</li>
+                <li><i class="bi bi-check-circle-fill"></i>Technique</li>
+                <li><i class="bi bi-check-circle-fill"></i>Condition physique</li>
+                <li><i class="bi bi-check-circle-fill"></i>Coordination &amp; mobilité</li>
+                <li><i class="bi bi-check-circle-fill"></i>Confiance en soi</li>
                 <li><i class="bi bi-check-circle-fill"></i>Coaching individuel (1-on-1)</li>
               </ul>
-              <a class="btn-join btn-join-solid mt-3" href="contact.html">Réserver</a>
+              <div class="plan-duration"><i class="bi bi-clock"></i>Durée indicative : 1 à 3 mois</div>
+              <div class="plan-price">
+                <div class="plan-price-main">
+                  <span class="plan-amount">60€</span>
+                  <span class="plan-price-sub">/ séance</span>
+                </div>
+                <ul class="plan-price-opts">
+                  <li><span>1 séance / semaine</span><span class="opt-val">240 € / mois</span></li>
+                  <li><span>2 séances / semaine</span><span class="opt-val">480 € / mois</span></li>
+                </ul>
+              </div>
+              <a class="btn-join btn-join-solid mt-3" href="contact.html">Commencer mon programme</a>
             </div>
           </div>
         </div>
 
-        <!-- MONTHLY INTENSIVE -->
+        <!-- ÉTAPE 3 — PERFORMANCE -->
         <div class="col-12 col-md-6 col-lg-3 reveal reveal-2">
           <div class="plan-card">
             <div class="plan-img-wrap">
-              <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&q=80&fit=crop" alt="Monthly Intensive"/>
+              <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&q=80&fit=crop" alt="Performance"/>
               <div class="plan-img-overlay"></div>
-              <div class="plan-tier">Mensuel Intensif</div>
+              <div class="plan-tier">Étape 3</div>
             </div>
             <div class="p-4 flex-fill d-flex flex-column">
-              <div class="plan-name mb-1">Mensuel Intensif</div>
-              <div class="d-flex align-items-end gap-1 border-bottom border-secondary py-3 mb-3">
-                <span class="plan-amount">400€</span>
-                <span class="text-muted ms-1" style="font-family:var(--font-d);font-size:.72rem;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px">/mois</span>
-              </div>
+              <div class="plan-name mb-1">Performance</div>
+              <div class="plan-quote">« Je veux passer au niveau supérieur »</div>
+              <p class="plan-desc">Vous pratiquez déjà et souhaitez développer vos capacités physiques et techniques ?</p>
+              <div class="plan-sublabel">Travail spécifique sur</div>
               <ul class="plan-features flex-fill">
-                <li class="hl"><i class="bi bi-check-circle-fill"></i>2 séances par semaine (8 séances)</li>
-                <li class="hl"><i class="bi bi-check-circle-fill"></i>Soit 50 € / séance</li>
-                <li><i class="bi bi-check-circle-fill"></i>Plan d'entraînement personnalisé</li>
+                <li><i class="bi bi-check-circle-fill"></i>Force &amp; puissance</li>
+                <li><i class="bi bi-check-circle-fill"></i>Vitesse &amp; explosivité</li>
+                <li><i class="bi bi-check-circle-fill"></i>Endurance</li>
+                <li><i class="bi bi-check-circle-fill"></i>Technique avancée</li>
                 <li><i class="bi bi-check-circle-fill"></i>Coaching individuel (1-on-1)</li>
               </ul>
-              <a class="btn-join btn-join-outline mt-3" href="contact.html">Réserver</a>
+              <div class="plan-duration"><i class="bi bi-clock"></i>Durée indicative : 3 à 6 mois</div>
+              <div class="plan-price">
+                <div class="plan-price-main">
+                  <span class="plan-amount">50€</span>
+                  <span class="plan-price-sub">/ séance</span>
+                </div>
+                <div class="plan-price-note">Avec engagement trimestriel.</div>
+                <ul class="plan-price-opts">
+                  <li><span>1 séance / semaine</span><span class="opt-val">600 € / trimestre</span></li>
+                  <li><span>2 séances / semaine</span><span class="opt-val">1 200 € / trimestre</span></li>
+                </ul>
+              </div>
+              <a class="btn-join btn-join-outline mt-3" href="contact.html">Développer mes performances</a>
             </div>
           </div>
         </div>
 
-        <!-- QUARTERLY 1x/WEEK -->
-        <div class="col-12 col-md-6 col-lg-3 reveal reveal-2">
-          <div class="plan-card">
-            <div class="plan-img-wrap">
-              <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&q=80&fit=crop" alt="Quarterly"/>
-              <div class="plan-img-overlay"></div>
-              <div class="plan-tier">Trimestriel</div>
-            </div>
-            <div class="p-4 flex-fill d-flex flex-column">
-              <div class="plan-name mb-1">Forfait Trimestriel</div>
-              <div class="d-flex align-items-end gap-1 border-bottom border-secondary py-3 mb-3">
-                <span class="plan-amount">600€</span>
-                <span class="text-muted ms-1" style="font-family:var(--font-d);font-size:.72rem;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px">/trimestre</span>
-              </div>
-              <ul class="plan-features flex-fill">
-                <li class="hl"><i class="bi bi-check-circle-fill"></i>1 séance par semaine (12 séances)</li>
-                <li class="hl"><i class="bi bi-check-circle-fill"></i>Soit 50 € / séance</li>
-                <li><i class="bi bi-check-circle-fill"></i>Suivi de progression sur 3 mois</li>
-                <li><i class="bi bi-check-circle-fill"></i>Coaching individuel (1-on-1)</li>
-              </ul>
-              <a class="btn-join btn-join-outline mt-3" href="contact.html">Réserver</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- QUARTERLY 2x/WEEK -->
+        <!-- ÉTAPE 4 — EXPERT / COMPÉTITION -->
         <div class="col-12 col-md-6 col-lg-3 reveal reveal-3">
           <div class="plan-card">
             <div class="plan-img-wrap">
-              <img src="https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=600&q=80&fit=crop" alt="Quarterly Intensive"/>
+              <img src="https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=600&q=80&fit=crop" alt="Expert et compétition"/>
               <div class="plan-img-overlay"></div>
-              <div class="plan-tier">Trimestriel Intensif</div>
+              <div class="plan-tier">Étape 4</div>
             </div>
             <div class="p-4 flex-fill d-flex flex-column">
-              <div class="plan-name mb-1">Trimestriel Intensif</div>
-              <div class="d-flex align-items-end gap-1 border-bottom border-secondary py-3 mb-3">
-                <span class="plan-amount">1 200€</span>
-                <span class="text-muted ms-1" style="font-family:var(--font-d);font-size:.72rem;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px">/trimestre</span>
-              </div>
+              <div class="plan-name mb-1">Expert / Compétition</div>
+              <div class="plan-quote">« Je veux me préparer pour performer »</div>
+              <p class="plan-desc">Un accompagnement personnalisé destiné aux pratiquants avancés et aux compétiteurs. Le programme est adapté à votre discipline et à votre échéance.</p>
+              <div class="plan-sublabel">Programme sur mesure</div>
               <ul class="plan-features flex-fill">
-                <li class="hl"><i class="bi bi-check-circle-fill"></i>2 séances par semaine (24 séances)</li>
-                <li class="hl"><i class="bi bi-check-circle-fill"></i>Soit 50 € / séance</li>
-                <li><i class="bi bi-check-circle-fill"></i>Progression accélérée</li>
-                <li><i class="bi bi-check-circle-fill"></i>Coaching individuel (1-on-1)</li>
+                <li><i class="bi bi-check-circle-fill"></i>Préparation physique &amp; conditionnement</li>
+                <li><i class="bi bi-check-circle-fill"></i>Technique &amp; explosivité</li>
+                <li><i class="bi bi-check-circle-fill"></i>Stratégie de combat</li>
+                <li><i class="bi bi-check-circle-fill"></i>Préparation mentale</li>
               </ul>
-              <a class="btn-join btn-join-outline mt-3" href="contact.html">Réserver</a>
+              <div class="plan-duration"><i class="bi bi-clock"></i>Durée indicative : 6 mois et +</div>
+              <div class="plan-price">
+                <div class="plan-price-main">
+                  <span class="plan-amount">50€</span>
+                  <span class="plan-price-sub">/ séance</span>
+                </div>
+                <div class="plan-price-note">Dans le cadre d'un engagement trimestriel.</div>
+              </div>
+              <a class="btn-join btn-join-outline mt-3" href="contact.html">Préparer ma performance</a>
             </div>
           </div>
         </div>
@@ -378,6 +421,47 @@
               <div class="plan-name mb-1">Coaching de Groupe</div>
               <div style="font-size:.9rem;color:#fff">6 à 15 personnes</div>
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OBJECTIF / MÉTHODE -->
+  <section class="method-section py-5 py-lg-6">
+    <div class="container-fluid px-4 px-lg-5">
+      <div class="row g-5 align-items-center">
+        <div class="col-12 col-lg-5 reveal">
+          <div class="section-tag">Notre Méthode</div>
+          <h2 class="section-title">Votre Objectif.<br><span style="color:var(--red)">Notre Méthode.</span></h2>
+          <div class="red-divider my-3"></div>
+          <p>Que vous souhaitiez vous remettre en forme, apprendre à vous défendre, progresser techniquement, améliorer vos performances ou préparer une compétition, Konmon Deh adapte le coaching à votre niveau.</p>
+          <p class="mb-0" style="color:#fff;font-weight:600">Pas besoin d'être sportif pour commencer.</p>
+        </div>
+        <div class="col-12 col-lg-7 reveal reveal-1">
+          <div class="row g-3">
+            <div class="col-12 col-sm-6">
+              <div class="discipline-item d-flex"><i class="bi bi-hand-index-thumb-fill"></i><span>Boxe anglaise</span></div>
+            </div>
+            <div class="col-12 col-sm-6">
+              <div class="discipline-item d-flex"><i class="bi bi-lightning-charge-fill"></i><span>Kick-boxing</span></div>
+            </div>
+            <div class="col-12 col-sm-6">
+              <div class="discipline-item d-flex"><i class="bi bi-people-fill"></i><span>Grappling</span></div>
+            </div>
+            <div class="col-12 col-sm-6">
+              <div class="discipline-item d-flex"><i class="bi bi-shield-fill"></i><span>Lutte</span></div>
+            </div>
+            <div class="col-12">
+              <div class="discipline-item d-flex"><i class="bi bi-heart-pulse-fill"></i><span>Préparation physique</span></div>
+            </div>
+          </div>
+          <div class="first-step d-flex flex-column flex-sm-row align-items-sm-center gap-3 mt-4">
+            <div class="d-flex align-items-center gap-3">
+              <div class="support-icon"><i class="bi bi-stopwatch-fill"></i></div>
+              <div class="support-text-label"><strong>45 € — 30 minutes</strong>Votre première étape : la séance découverte</div>
+            </div>
+            <a href="contact.html" class="btn-join btn-join-solid px-4 py-3 ms-sm-auto">Réserver ma séance</a>
           </div>
         </div>
       </div>
@@ -432,8 +516,8 @@
   <div class="red-cta py-5 text-center">
     <div class="container position-relative">
       <h2 class="mb-3">Prêt à Vous Entraîner ?</h2>
-      <p class="mx-auto mb-4" style="max-width:500px">Choisissez votre formule et commencez votre parcours avec Coach Konmon. Des séances uniques aux camps de combat — tous les niveaux sont les bienvenus.</p>
-      <a href="contact.html" class="btn btn-cta-white">Commencer Aujourd'hui</a>
+      <p class="mx-auto mb-4" style="max-width:540px">Choisissez votre parcours et commencez avec Coach Konmon. Du débutant au compétiteur — tout commence par une séance découverte à 45 €.</p>
+      <a href="contact.html" class="btn btn-cta-white">Réserver Ma Séance Découverte</a>
     </div>
   </div>
 
@@ -447,6 +531,7 @@
           <div class="d-flex gap-2">
             <a class="social-btn" href="https://www.instagram.com/konmon_deh" target="_blank"><i class="fa-brands fa-instagram"></i></a>
             <a class="social-btn" href="https://www.facebook.com/konmon.deh/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+            <a class="social-btn" href="https://wa.me/33763416120" target="_blank" rel="noopener" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
             <!-- <a class="social-btn" href="#" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
             <a class="social-btn" href="#" target="_blank"><i class="fa-brands fa-youtube"></i></a> -->
           </div>
