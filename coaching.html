@@ -144,7 +144,8 @@
     .age-card { background: var(--dark2); border: 1px solid rgba(255,255,255,.07); transition: border-color .25s; }
     .age-card:hover { border-color: rgba(232,33,46,.35); }
     .age-label { font-family: var(--font-d); font-size: .66rem; letter-spacing: 2px; text-transform: uppercase; color: var(--red); }
-    .age-value { font-family: var(--font-c); font-size: 1.5rem; font-weight: 800; color: #fff; }
+    .age-value { font-family: var(--font-c); font-size: 1.5rem; font-weight: 800; color: #fff; overflow-wrap: break-word; hyphens: auto; }
+    @media (max-width: 575.98px) { .age-value { font-size: 1.1rem; } }
     .age-note { font-size: .8rem; color: rgba(255,255,255,.38); }
 
     /* FAQ */
